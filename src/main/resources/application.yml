@@ -1,0 +1,25 @@
+server:
+  port: 8081
+
+service:
+  version: '@project-version'
+
+spring:
+  application:
+    name: '@project.artifactId@'
+  jpa:
+    open-in-view: false
+
+  datasource:
+    url: jdbc:postgresql://localhost:5432/javacode
+    username: postgres
+    password: postgres
+
+  liquibase:
+    change-log: classpath:db.migration/db.changelog-master.xml
+    driver-class-name: org.postgresql.Driver
+    database-change-log-lock-table: LIQ_DATABASECHANGELOGLOCK
+    database-change-log-table: LIQ_DATABASECHANGELOG
+    password: ${spring.datasource.password}
+    url: ${spring.datasource.url}
+    user: ${spring.datasource.username}
